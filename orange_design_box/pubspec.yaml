@@ -1,0 +1,18 @@
+name: orange_design_box
+description: A flutter widget to simplify design implementations.
+version: 1.2.0
+homepage: https://github.com/o-Adrian-o/DesignBox
+
+environment:
+  sdk: '>=3.2.3 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  orange_utils:
+    path: "../orange_utils"
+
+dev_dependencies:
+  test: 1.24.3
