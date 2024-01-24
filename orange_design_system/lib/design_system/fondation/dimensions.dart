@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+class DesignLines {
+  static const s1 = 1.0;
+  static const s2 = 2.0;
+}
+
 class DesignSpacing {
   static const s4 = 4.0;
   static const s8 = 8.0;
@@ -18,6 +23,8 @@ class DesignSpacing {
 }
 
 class DesignContainer {
+  static const c320 = 320.0;
+  static const c480 = 480.0;
   static const c640 = 640.0;
   static const c768 = 768.0;
   static const c1024 = 1024.0;
@@ -52,4 +59,8 @@ extension SpaceExtension on double {
   EdgeInsets get edgeHorizontal => EdgeInsets.symmetric(horizontal: this);
   EdgeInsets get edgeVertical => EdgeInsets.symmetric(horizontal: this);
   EdgeInsets get edgeAll => EdgeInsets.all(this);
+  EdgeInsets get edgeTop => EdgeInsets.only(top: this);
+  EdgeInsets get edgeRight => EdgeInsets.only(right: this);
+  EdgeInsets get edgeLeft => EdgeInsets.only(left: this);
+  EdgeInsets get edgeBottom => EdgeInsets.only(bottom: this);
 }
