@@ -1,13 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:orange_design_system/design_system/fondation/colors.dart';
 import 'package:orange_design_system/design_system/fondation/dimensions.dart';
 
 class DefaultTextField extends StatelessWidget {
-  final Color? focusColor;
-  final Color? errorColor;
   final Color? fillColor;
   final Color? hintColor;
+  final Color? focusColor;
   final TextStyle? textStyle;
   final TextStyle? errorStyle;
   final BorderRadius? borderRadius;
@@ -19,23 +17,27 @@ class DefaultTextField extends StatelessWidget {
 
   const DefaultTextField(
       {super.key,
-      this.focusColor,
-      this.errorColor,
       this.fillColor,
       this.textStyle,
       this.errorStyle,
-        this.borderRadius, required this.borderWidth, this.hintColor, this.onChanged, this.onSubmitted, this.hintText, this.errorText});
+      this.borderRadius,
+      this.borderWidth,
+      this.onChanged,
+      this.onSubmitted,
+      this.hintText,
+      this.errorText, this.hintColor, this.focusColor});
 
   @override
   Widget build(BuildContext context) {
-    final focusColor = this.focusColor ?? DesignColor.primary.shadeTextSoft;
-    final errorColor = this.errorColor ?? DesignColor.error.shadeTextSoft;
-    final fillColor = this.fillColor ?? DesignColor.neutral.shade100;
-    final textStyle = this.textStyle ?? const TextStyle();
-    final errorStyle = this.errorStyle ?? const TextStyle();
+    final textStyle = this.textStyle ?? TextStyle(color: DesignColor.primary.shadeTextSoft);
+    final errorStyle = this.errorStyle ?? textStyle.copyWith(color: DesignColor.error.shadeTextSoft);
     final borderRadius = this.borderRadius ?? DesignRadius.r4.all;
     final borderWidth = this.borderWidth ?? DesignLines.s2;
     final isErrorVisible = errorText != null;
+    final errorColor = errorStyle.color ?? DesignColor.error.shadeTextSoft;
+    final fillColor = this.fillColor ?? DesignColor.neutral.shadeTextFieldBackground;
+    final hintColor = this.hintColor ?? DesignColor.neutral.shadeTextExtraSoft;
+    final focusColor = this.focusColor ?? DesignColor.primary.shadeTextSoft;
 
     return Stack(children: [
       TextField(
@@ -46,8 +48,7 @@ class DefaultTextField extends StatelessWidget {
         decoration: InputDecoration(
           filled: true,
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-                color: focusColor, width: borderWidth),
+            borderSide: BorderSide(color: focusColor, width: borderWidth),
             borderRadius: borderRadius,
           ),
           border: OutlineInputBorder(
@@ -55,8 +56,7 @@ class DefaultTextField extends StatelessWidget {
             borderRadius: borderRadius,
           ),
           focusedErrorBorder: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: errorColor, width: borderWidth),
+            borderSide: BorderSide(color: errorColor, width: borderWidth),
             borderRadius: borderRadius,
           ),
           focusColor: focusColor,
@@ -78,7 +78,8 @@ class DefaultTextField extends StatelessWidget {
               child: Transform.translate(
                   offset: const Offset(0, DesignSpacing.s64),
                   child: Text(errorText ?? "",
-                      style: errorStyle.copyWith(color: DesignColor.error.shadeTextSoft))))
+                      style: errorStyle.copyWith(
+                          color: DesignColor.error.shadeTextSoft))))
         ],
       )
     ]);

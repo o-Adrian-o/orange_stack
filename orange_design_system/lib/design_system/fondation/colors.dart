@@ -35,8 +35,10 @@ class DesignColor extends ColorSwatch<int> {
 
   Color get shadeIconHighlight => shade100;
   Color get shadeIcon => shade900;
-  Color get shadeText => shade900;
+  Color get shadeTextExtraSoft => shade500;
   Color get shadeTextSoft => shade700;
+  Color get shadeText => shade900;
+  Color get shadeTextFieldBackground => shade100;
   Color get shadeSeparator => shade100;
   Color get shadeBackground => shade50;
   Color get shadeNeutral => shade500;
