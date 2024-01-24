@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:orange_design_system/design_system/fondation/colors.dart';
 import 'package:orange_design_system/design_system/fondation/dimensions.dart';
+import 'package:simple_animations/simple_animations.dart';
 
-class DefaultTextField extends StatelessWidget {
+class DefaultTextField extends StatefulWidget {
   final Color? fillColor;
   final Color? hintColor;
   final Color? focusColor;
@@ -25,30 +26,73 @@ class DefaultTextField extends StatelessWidget {
       this.onChanged,
       this.onSubmitted,
       this.hintText,
-      this.errorText, this.hintColor, this.focusColor});
+      this.errorText,
+      this.hintColor,
+      this.focusColor});
+
+  @override
+  State<StatefulWidget> createState() {
+    return DefaultTextFieldState();
+  }
+}
+
+class DefaultTextFieldState extends State<DefaultTextField>
+    with AnimationMixin {
+  late Animation<double> errorTransition;
+  String? errorMessage;
+
+  @override
+  void initState() {
+    controller.duration = const Duration(milliseconds: 200);
+    errorTransition = Tween<double>(begin: 0.0, end: 200.0).animate(controller);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = this.textStyle ?? TextStyle(color: DesignColor.primary.shadeTextSoft);
-    final errorStyle = this.errorStyle ?? textStyle.copyWith(color: DesignColor.error.shadeTextSoft);
-    final borderRadius = this.borderRadius ?? DesignRadius.r4.all;
-    final borderWidth = this.borderWidth ?? DesignLines.s2;
-    final isErrorVisible = errorText != null;
+    if (widget.errorText != null) {
+      errorMessage = widget.errorText;
+      controller.play();
+    }
+
+    final textStyle =
+        widget.textStyle ?? TextStyle(color: DesignColor.primary.shadeTextSoft);
+    final errorStyle = widget.errorStyle ??
+        textStyle.copyWith(color: DesignColor.error.shadeTextSoft);
+    final borderRadius = widget.borderRadius ?? DesignRadius.r4.all;
+    final borderWidth = widget.borderWidth ?? DesignLines.s2;
     final errorColor = errorStyle.color ?? DesignColor.error.shadeTextSoft;
-    final fillColor = this.fillColor ?? DesignColor.neutral.shadeTextFieldBackground;
-    final hintColor = this.hintColor ?? DesignColor.neutral.shadeTextExtraSoft;
-    final focusColor = this.focusColor ?? DesignColor.primary.shadeTextSoft;
+    final fillColor =
+        widget.fillColor ?? DesignColor.neutral.shadeTextFieldBackground;
+    final hintColor =
+        widget.hintColor ?? DesignColor.neutral.shadeTextExtraSoft;
+    final focusColor = widget.focusColor ?? DesignColor.primary.shadeTextSoft;
+    final animatedColor =
+        Color.lerp(focusColor, errorColor, errorTransition.value / 200) ??
+            focusColor;
 
     return Stack(children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Opacity(
+              opacity: errorTransition.value / 200,
+              child: Transform.translate(
+                  offset: const Offset(0, DesignSpacing.s64),
+                  child: Text(errorMessage ?? "",
+                      style: errorStyle.copyWith(
+                          color: DesignColor.error.shadeTextSoft))))
+        ],
+      ),
       TextField(
         style: textStyle,
         textAlign: TextAlign.center,
-        cursorColor: focusColor,
+        cursorColor: animatedColor,
         textInputAction: TextInputAction.none,
         decoration: InputDecoration(
           filled: true,
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: focusColor, width: borderWidth),
+            borderSide: BorderSide(color: animatedColor, width: borderWidth),
             borderRadius: borderRadius,
           ),
           border: OutlineInputBorder(
@@ -56,7 +100,7 @@ class DefaultTextField extends StatelessWidget {
             borderRadius: borderRadius,
           ),
           focusedErrorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: errorColor, width: borderWidth),
+            borderSide: BorderSide(color: animatedColor, width: borderWidth),
             borderRadius: borderRadius,
           ),
           focusColor: focusColor,
@@ -64,24 +108,14 @@ class DefaultTextField extends StatelessWidget {
           hoverColor: fillColor,
           labelStyle: textStyle,
           hintStyle: textStyle.copyWith(color: hintColor),
-          hintText: hintText,
+          hintText: widget.hintText,
         ),
-        onSubmitted: onSubmitted,
-        onChanged: onChanged,
+        onSubmitted: widget.onSubmitted,
+        onChanged: (value) {
+          controller.reverse();
+          widget.onChanged?.call(value);
+        },
       ),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          AnimatedOpacity(
-              opacity: isErrorVisible ? 1.0 : 0.0,
-              duration: const Duration(milliseconds: 100),
-              child: Transform.translate(
-                  offset: const Offset(0, DesignSpacing.s64),
-                  child: Text(errorText ?? "",
-                      style: errorStyle.copyWith(
-                          color: DesignColor.error.shadeTextSoft))))
-        ],
-      )
     ]);
   }
 }
