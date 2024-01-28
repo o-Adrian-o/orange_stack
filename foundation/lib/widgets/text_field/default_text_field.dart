@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:orange_design_system/design_system/fondation/colors.dart';
-import 'package:orange_design_system/design_system/fondation/dimensions.dart';
+import 'package:orange_design_system/design_system/foundation/colors.dart';
+import 'package:orange_design_system/design_system/foundation/dimensions.dart';
 import 'package:simple_animations/simple_animations.dart';
 
 class DefaultTextField extends StatefulWidget {

@@ -1,4 +1,4 @@
-import 'package:orange_design_system/design_system/fondation/colors.dart';
+import 'package:orange_design_system/design_system/foundation/colors.dart';
 import 'package:flutter/material.dart';
 
 class DesignFontWeight {

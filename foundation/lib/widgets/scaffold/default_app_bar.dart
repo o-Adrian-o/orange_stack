@@ -1,7 +1,7 @@
 import 'package:orange_design_box/box.dart';
-import 'package:orange_design_system/design_system/fondation/colors.dart';
-import 'package:orange_design_system/design_system/fondation/effects.dart';
-import 'package:orange_design_system/design_system/fondation/icons.dart';
+import 'package:orange_design_system/design_system/foundation/colors.dart';
+import 'package:orange_design_system/design_system/foundation/effects.dart';
+import 'package:orange_design_system/design_system/foundation/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:simple_animations/simple_animations.dart';

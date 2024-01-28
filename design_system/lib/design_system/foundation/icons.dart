@@ -1,4 +1,4 @@
-import 'package:orange_design_system/design_system/fondation/dimensions.dart';
+import 'package:orange_design_system/design_system/foundation/dimensions.dart';
 import 'package:orange_design_system/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 

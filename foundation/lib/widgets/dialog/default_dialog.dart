@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:orange_design_box/box.dart';
-import 'package:orange_design_system/design_system/fondation/colors.dart';
-import 'package:orange_design_system/design_system/fondation/dimensions.dart';
-import 'package:orange_design_system/design_system/fondation/effects.dart';
+import 'package:orange_design_system/design_system/foundation/colors.dart';
+import 'package:orange_design_system/design_system/foundation/dimensions.dart';
+import 'package:orange_design_system/design_system/foundation/effects.dart';
 
 class DefaultDialog extends StatelessWidget {
   final Widget child;
