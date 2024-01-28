@@ -1,23 +1,20 @@
-name: orange_utils
-description: "Utility functions for Dart & Flutter."
+name: open_link
+description: "A new Flutter package project."
+version: 0.0.1
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-
-version: 1.0.0+1
 
 environment:
   sdk: '>=3.2.3 <4.0.0'
+  flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  open_link:
-    path: "./open_link"
+  url_launcher: ^6.2.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^2.0.0
 
 flutter:
-  uses-material-design: true

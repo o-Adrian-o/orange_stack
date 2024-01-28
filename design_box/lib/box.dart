@@ -79,6 +79,9 @@ class Box extends StatelessWidget {
   }
 
   Widget? withOptionalOnPressed(Widget? child) {
+    final safeColor = color ?? Colors.white;
+    final safePressedColor = onPressedColor ?? (safeColor.isDark ? Colors.white : Colors.black);
+
     if (onPressed == null) {
       return withOptionalPadding();
     }
@@ -86,14 +89,14 @@ class Box extends StatelessWidget {
       return Material(
           color: const Color.fromARGB(0, 0, 0, 0),
           child: InkWell(
-              hoverColor: onPressedColor
-                  ?.withAlpha((10 * onPressedColorIntensity).floor()),
-              focusColor: onPressedColor
-                  ?.withAlpha((15 * onPressedColorIntensity).floor()),
-              highlightColor: onPressedColor
-                  ?.withAlpha((20 * onPressedColorIntensity).floor()),
-              splashColor: onPressedColor
-                  ?.withAlpha((20 * onPressedColorIntensity).floor()),
+              hoverColor: safePressedColor
+                  .withAlpha((15 * onPressedColorIntensity).floor()),
+              focusColor: safePressedColor
+                  .withAlpha((15 * onPressedColorIntensity).floor()),
+              highlightColor: safePressedColor
+                  .withAlpha((25 * onPressedColorIntensity).floor()),
+              splashColor: safePressedColor
+                  .withAlpha((25 * onPressedColorIntensity).floor()),
               splashFactory: InkRipple.splashFactory,
               customBorder: RoundedRectangleBorder(
                   borderRadius:
