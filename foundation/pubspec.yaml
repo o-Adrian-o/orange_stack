@@ -32,11 +32,11 @@ dependencies:
     sdk: flutter
 
   orange_design_system:
-    path: "../orange_design_system"
+    path: "../design_system"
   orange_design_box:
-    path: "../orange_design_box"
+    path: "../design_box"
   orange_utils:
-    path: "../orange_utils"
+    path: "../utils"
 
   simple_animations: ^5.0.2
 

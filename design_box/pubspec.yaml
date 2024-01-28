@@ -12,7 +12,7 @@ dependencies:
     sdk: flutter
 
   orange_utils:
-    path: "../orange_utils"
+    path: "../utils"
 
 dev_dependencies:
   test: 1.24.3

@@ -13,7 +13,7 @@ dependencies:
   orange_design_system:
     path: ../
   orange_design_box:
-    path: ../../orange_design_box
+    path: ../../design_box
 
 dev_dependencies:
   flutter_test:

@@ -126,7 +126,7 @@ packages:
   orange_design_box:
     dependency: "direct main"
     description:
-      path: "../../orange_design_box"
+      path: "../../design_box"
       relative: true
     source: path
     version: "1.2.0"

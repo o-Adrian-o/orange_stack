@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DesignLines {
+  static const sHairline = 0.5;
   static const s1 = 1.0;
   static const s2 = 2.0;
 }
