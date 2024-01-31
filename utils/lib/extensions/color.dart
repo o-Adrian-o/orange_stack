@@ -6,9 +6,13 @@ extension ColorExtension on Color {
   bool get isLight => grayscale >= 128;
 
   /// Returns a copy of this color with the given luminance multiplier.
-  Color luminance(double multiplier) {
+  Color withLuminance(double multiplier) {
     final hsl = HSLColor.fromColor(this);
     final luminance = hsl.withLightness((hsl.lightness * multiplier).clamp(0.0, 1.0));
     return luminance.toColor();
+  }
+
+  Color withSaturation(double value) {
+    return HSLColor.fromColor(this).withSaturation(value).toColor();
   }
 }

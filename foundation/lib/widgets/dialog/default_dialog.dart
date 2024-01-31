@@ -16,7 +16,6 @@ class DefaultDialog extends StatelessWidget {
         radius: DesignRadius.r16.all,
         shadow: DesignShadow.s8,
         width: width,
-        margin: DesignSpacing.s128.edgeBottom,
         color: DesignColor.neutral.shadeBackground,
         padding: DesignSpacing.s48.edgeAll,
         child: child);

@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  sprintf: ^7.0.0
   open_link:
     path: "./open_link"
 
