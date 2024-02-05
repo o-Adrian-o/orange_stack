@@ -13,6 +13,7 @@ dependencies:
   sprintf: ^7.0.0
   open_link:
     path: "./open_link"
+  screenshot: ^2.1.0
 
 dev_dependencies:
   flutter_test:
